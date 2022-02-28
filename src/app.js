@@ -12,9 +12,9 @@ createRoles();
 
 app.use(
     cors({
-        origin:"*",
+        origin:"http://localhost:3000",
     })
-);
+)
 app.use(morgan('dev'));
 app.use(express.json());
 app.use('/api/products',productRoutes);
