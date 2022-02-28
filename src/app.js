@@ -12,7 +12,7 @@ createRoles();
 
 app.use(
     cors({
-        origin:"*"
+        origin:"*",
     })
 );
 app.use(morgan('dev'));
