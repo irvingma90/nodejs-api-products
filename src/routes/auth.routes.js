@@ -4,7 +4,7 @@ import {verifySignup} from '../middlewares'
 
 const router = Router();
 
-router.post('/signup',[verifySignup.checkDuplicateUserOrEmail, verifySignup.checkRolesExisted],authCtrl.signup);
+router.post('/signup',[verifySignup.checkDuplicateUserOrEmail],authCtrl.signup);
 router.post('/signin', authCtrl.sigin);
 
 export default router;
