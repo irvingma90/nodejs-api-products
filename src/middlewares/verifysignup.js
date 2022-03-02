@@ -12,16 +12,20 @@ export const checkDuplicateUserOrEmail = async(req, res, next) =>{
 }
 
 export const checkRolesExisted = async(req,res,next) => {
-    const roles = await Role.find();
-    for(let i=0; i<req.body.roles.length; i++){ 
-        for (let j=0; j<roles.length; j++){
-            if(req.body.roles[i] === roles[j].name){
-                next();
-                return;
+    try {
+        const roles = await Role.find();
+        for(let i=0; i<req.body.roles.length; i++){ 
+            for (let j=0; j<roles.length; j++){
+                if(req.body.roles[i] === roles[j].name){
+                    next();
+                    return;
+                }
             }
-        }
-        return res.status(400).json({
-            message: `Role ${req.body.roles[i]} does not exist`
-            })
+            return res.status(400).json({
+                message: `Role ${req.body.roles[i]} does not exist`
+                })
+        }   
+    } catch (error) {
+        console.log(error);
     }
 }
