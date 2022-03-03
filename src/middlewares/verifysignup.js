@@ -14,7 +14,7 @@ export const checkDuplicateUserOrEmail = async(req, res, next) =>{
 export const checkRolesExisted = async(req,res,next) => {
     try {
         const roles = await Role.find();
-        for(let i=0; i<req.body.roles?.length; i++){ 
+        for(let i=0; i<req.body.roles.length; i++){ 
             for (let j=0; j<roles.length; j++){
                 if(req.body.roles[i] === roles[j].name){
                     next();
